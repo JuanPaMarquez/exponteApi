@@ -1,12 +1,18 @@
 import { Router } from "express";
 import { 
   crearUsuario,
-  obtenerUsuarioPorId
+  obtenerUsuarioPorId,
+  verificarSesionUsuario,
+  modificarNombreUsuario,
+  modificarPasswordUsuario,
 } from "../controllers/usuarioController";
 
 const usuarioRouter = Router();
 
 usuarioRouter.post("/usuario", crearUsuario);
 usuarioRouter.get("/usuario/:id", obtenerUsuarioPorId);
+usuarioRouter.post("/usuario/verificar", verificarSesionUsuario);
+usuarioRouter.put("/usuario/nombre/:id", modificarNombreUsuario);
+usuarioRouter.put("/usuario/password/:id", modificarPasswordUsuario);
 
 export default usuarioRouter;

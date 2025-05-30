@@ -11,8 +11,13 @@ export const crearUsuario = async (req: Request, res: Response) => {
 
   try {
     const existe = await usuarioService.existeUsuario(nombre_usuario);
+    const existeEmail = await usuarioService.existeEmail(email);
     if (existe) {
       res.status(400).json({ error: 'El nombre de usuario ya está en uso' });
+      return;
+    }
+    if (existeEmail) {
+      res.status(400).json({ error: 'El email ya está en uso' });
       return;
     }
 
@@ -29,6 +34,11 @@ export const obtenerUsuarioPorId = async (req: Request, res: Response) => {
   
   const { id } = req.params;
 
+  if (!id) {
+    res.status(400).json({ error: "El ID del usuario es obligatorio" });
+    return; 
+  }
+
   try {
     const usuario = await usuarioService.obtenerUsuarioPorId(parseInt(id));
     res.status(200).json(usuario);
@@ -36,3 +46,65 @@ export const obtenerUsuarioPorId = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Error al obtener usuario" });
   }
 }
+
+export const verificarSesionUsuario = async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    res.status(400).json({ error: "Email y contraseña son obligatorios" });
+    return; 
+  }
+  try {
+    const usuario = await usuarioService.verificarUsuario(email, password);
+    if (usuario) {
+      res.status(200).json({ message: "Usuario verificado correctamente", usuario });
+    } else {
+      res.status(401).json({ error: "Email o contraseña incorrectos" });
+    }
+  } catch (error) {
+    console.error("Error al verificar el usuario:", error);
+    res.status(500).json({ error: "Error al verificar el usuario" });
+  }
+};
+
+export const modificarNombreUsuario = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { nombre_usuario } = req.body;
+
+  if (!id || !nombre_usuario) {
+    res.status(400).json({ error: "ID y nombre de usuario son obligatorios" });
+    return; 
+  }
+
+  try {
+    const existe = await usuarioService.existeUsuario(nombre_usuario);
+    if (existe) {
+      res.status(400).json({ error: 'El nombre de usuario ya está en uso' });
+      return;
+    }
+    const usuarioModificado = await usuarioService.modificarNombreUsuario(parseInt(id), nombre_usuario);
+    res.status(200).json(usuarioModificado);
+  } catch (error) {
+    res.status(500).json({ error: "Error al modificar el usuario" });
+  }
+};
+
+export const modificarPasswordUsuario = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { password } = req.body;
+
+  if (!id || !password) {
+    res.status(400).json({ error: "ID y contraseña son obligatorios" });
+    return; 
+  }
+
+  try {
+    const usuarioModificado = await usuarioService.modificarPassword(parseInt(id), password);
+    if (!usuarioModificado) {
+      res.status(404).json({ error: "Usuario no encontrado o no se pudo modificar la contraseña" });
+      return;
+    }
+    res.status(200).json({ message: "Contraseña modificada correctamente" });
+  } catch (error) {
+    res.status(500).json({ error: "Error al modificar la contraseña del usuario" });
+  }
+};

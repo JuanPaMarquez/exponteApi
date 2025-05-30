@@ -1,0 +1,15 @@
+### * Obtener perfil por ID de usuario
+
+GET http://localhost:3000/api/perfil/1
+
+
+### * Crear un nuevo perfil
+POST http://localhost:3000/api/perfil
+Content-Type: application/json
+
+{
+  "nombre": "Nohora",
+  "foto": "nora.jpg",
+  "titulos": "Desarrolladora",
+  "usuario_id": 1
+}

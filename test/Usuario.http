@@ -12,3 +12,28 @@ Content-Type: application/json
   "email": "nora@gmail.com", 
   "password": "123nora" 
 }
+
+### * Verificar el email y la contraseña de un usuario
+POST http://localhost:3000/api/usuario/verificar
+Content-Type: application/json
+
+{
+  "email": "nora@gmail.com",
+  "password": "321nora"
+}
+
+### * Actualizar nombre de usuario
+PUT http://localhost:3000/api/usuario/nombre/1
+Content-Type: application/json
+
+{
+  "nombre_usuario": "Nohora1"
+}
+
+### * Actualizar contraseña de usuario
+PUT http://localhost:3000/api/usuario/password/1
+Content-Type: application/json
+
+{
+  "password": "321nora"
+}
