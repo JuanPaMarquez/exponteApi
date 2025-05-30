@@ -1,11 +1,12 @@
 import express from 'express';
-import routes from './routes/routes';
+import usuarioRouter from './routes/usuarioRoutes';
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use('/api', routes);
+
+app.use('/api', usuarioRouter);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
