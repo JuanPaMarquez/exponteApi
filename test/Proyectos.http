@@ -1,31 +1,53 @@
-### * Crear un proyecto
+### * Crear un proyectos
 POST http://localhost:3000/api/proyecto
 Content-Type: application/json
 
-{
-  "titulo": "Proyecto de prueba",
-  "descripcion": "Descripción del proyecto de prueba",
-  "imagen": "http://ejemplo.com/imagen.jpg",
-  "linkGithub": "http://github.com/usuario/proyecto",
-  "linkDemo": "http://ejemplo.com/demo",
-  "usuario_id": 1
-}
+[
+  {
+    "titulo": "Proyecto de prueba 2",
+    "descripcion": "Descripción del proyecto de prueba 2",
+    "imagen": "http://ejemplo.com/imagen.jpg",
+    "linkGithub": "http://github.com/usuario/proyecto",
+    "linkDemo": "http://ejemplo.com/demo",
+    "usuario_id": 1
+  },
+  {
+    "titulo": "Otro proyecto de prueba 2",
+    "descripcion": "Descripción de otro proyecto de prueba 2",
+    "imagen": "http://ejemplo.com/otra-imagen.jpg",
+    "linkGithub": "http://github.com/usuario/otro-proyecto",
+    "linkDemo": "http://ejemplo.com/otra-demo",
+    "usuario_id": 1
+  }
+]
 
 ### * Obtener todos los proyectos de un usuario
 GET http://localhost:3000/api/proyecto/1
 
-### * Modificar un proyecto
+### * Modificar un proyectos
 PUT http://localhost:3000/api/proyecto/1
 Content-Type: application/json
 
-{
-  "titulo": "Proyecto de prueba modificado",
-  "descripcion": "Descripción del proyecto de prueba modificada",
-  "imagen": "http://ejemplo.com/imagen.jpg",
-  "linkGithub": "http://github.com/usuario/proyecto",
-  "linkDemo": "http://ejemplo.com/demo",
-  "usuario_id": 1
-}
+[
+  {
+    "id": 3,
+    "titulo": "Proyecto de prueba 2 modificado",
+    "descripcion": "Descripción del proyecto de prueba 2",
+    "imagen": "http://ejemplo.com/imagen.jpg",
+    "linkGithub": "http://github.com/usuario/proyecto",
+    "linkDemo": "http://ejemplo.com/demo",
+    "usuario_id": 1
+  },
+  {
+    "id": 4,
+    "titulo": "Otro proyecto de prueba 2 modificado",
+    "descripcion": "Descripción de otro proyecto de prueba 2",
+    "imagen": "http://ejemplo.com/otra-imagen.jpg",
+    "linkGithub": "http://github.com/usuario/otro-proyecto",
+    "linkDemo": "http://ejemplo.com/otra-demo",
+    "usuario_id": 1
+  }
+]
 
 ### * Eliminar un proyecto
 DELETE http://localhost:3000/api/proyecto/1
