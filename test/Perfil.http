@@ -13,3 +13,13 @@ Content-Type: application/json
   "titulos": "Desarrolladora",
   "usuario_id": 1
 }
+
+### * Actualizar perfil por ID
+PUT http://localhost:3000/api/perfil/1
+Content-Type: application/json
+
+{
+  "nombre": "Nohora1",
+  "foto": "nora1.jpg",
+  "titulos": "Desarrolladora Senior"
+}

@@ -43,3 +43,21 @@ export const obtenerPerfilPorUsuarioId = async (req: Request, res: Response) => 
     res.status(500).json({ error: "Error al obtener perfil" });
   }
 };
+
+export const modificarPerfil = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { nombre, foto, titulos } = req.body;
+
+  if (!id || !nombre) {
+    res.status(400).json({ error: "ID y nombre son obligatorios" });
+    return; 
+  }
+
+  try {
+    const perfilModificado = await perfilService.modificarPerfil(parseInt(id), nombre, foto, titulos);
+    res.status(200).json({ message: "Perfil modificado correctamente", perfilModificado });
+  } catch (error) {
+    console.error("Error al modificar perfil:", error);
+    res.status(500).json({ error: "Error al modificar perfil" });
+  }
+};

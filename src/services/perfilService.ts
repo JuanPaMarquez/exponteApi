@@ -32,6 +32,16 @@ export class PerfilService {
     return result.length > 0 ? result[0] : null;
   }
 
+  async modificarPerfil(id: number, nombre: string, foto: string, titulos: string) {
+    const result = await db
+      .update(perfil)
+      .set({ nombre, foto, titulos })
+      .where(eq(perfil.id, id))
+      .returning();
+
+    return result[0];
+  }
+
 }
 
 export const perfilService = new PerfilService();

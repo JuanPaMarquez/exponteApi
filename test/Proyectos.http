@@ -1,0 +1,31 @@
+### * Crear un proyecto
+POST http://localhost:3000/api/proyecto
+Content-Type: application/json
+
+{
+  "titulo": "Proyecto de prueba",
+  "descripcion": "Descripción del proyecto de prueba",
+  "imagen": "http://ejemplo.com/imagen.jpg",
+  "linkGithub": "http://github.com/usuario/proyecto",
+  "linkDemo": "http://ejemplo.com/demo",
+  "usuario_id": 1
+}
+
+### * Obtener todos los proyectos de un usuario
+GET http://localhost:3000/api/proyecto/1
+
+### * Modificar un proyecto
+PUT http://localhost:3000/api/proyecto/1
+Content-Type: application/json
+
+{
+  "titulo": "Proyecto de prueba modificado",
+  "descripcion": "Descripción del proyecto de prueba modificada",
+  "imagen": "http://ejemplo.com/imagen.jpg",
+  "linkGithub": "http://github.com/usuario/proyecto",
+  "linkDemo": "http://ejemplo.com/demo",
+  "usuario_id": 1
+}
+
+### * Eliminar un proyecto
+DELETE http://localhost:3000/api/proyecto/1
