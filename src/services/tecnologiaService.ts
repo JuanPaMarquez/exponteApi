@@ -37,6 +37,16 @@ export class TecnologiaService {
 
     return result[0];
   }
+
+  // Eliminar una tecnología
+  async eliminarTecnologia(id: number) {
+    const result = await db
+      .delete(tecnologia)
+      .where(eq(tecnologia.id, id))
+      .returning();
+
+    return result[0];
+  }
 }
 
 export const tecnologiaService = new TecnologiaService();
