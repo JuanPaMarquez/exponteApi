@@ -30,6 +30,19 @@ Content-Type: application/json
 
 [
   {
+    "id": 2,
+    "titulo": "Proyecto de prueba",
+    "descripcion": "Descripción del proyecto de prueba",
+    "imagen": "http://ejemplo.com/imagen.jpg",
+    "linkGithub": "http://github.com/usuario/proyecto",
+    "linkDemo": "http://ejemplo.com/demo",
+    "tecnologias": [
+      {
+        "nombre_tecnologia": "sqlite"
+      }
+    ]
+  },
+  {
     "id": 3,
     "titulo": "Proyecto de prueba 2 modificado",
     "descripcion": "Descripción del proyecto de prueba 2",
@@ -38,13 +51,14 @@ Content-Type: application/json
     "linkDemo": "http://ejemplo.com/demo",
     "tecnologias": [
       {
-        "nombre_tecnologia": "JavaScript"
+        "id": 1,
+        "nombre_tecnologia": "JavaScript 2"
       },
       {
-        "nombre_tecnologia": "Node.js"
+        "id": 2,
+        "nombre_tecnologia": "typescript"
       }
-    ],
-    "usuario_id": 1
+    ]
   },
   {
     "id": 4,
@@ -55,10 +69,10 @@ Content-Type: application/json
     "linkDemo": "http://ejemplo.com/otra-demo",
     "tecnologias": [
       {
-        "nombre_tecnologia": "React"
+        "id": 3,
+        "nombre_tecnologia": "ReactJS"
       }
-    ],
-    "usuario_id": 1
+    ]
   }
 ]
 
