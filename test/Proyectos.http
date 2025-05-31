@@ -36,6 +36,14 @@ Content-Type: application/json
     "imagen": "http://ejemplo.com/imagen.jpg",
     "linkGithub": "http://github.com/usuario/proyecto",
     "linkDemo": "http://ejemplo.com/demo",
+    "tecnologias": [
+      {
+        "nombre_tecnologia": "JavaScript"
+      },
+      {
+        "nombre_tecnologia": "Node.js"
+      }
+    ],
     "usuario_id": 1
   },
   {
@@ -45,6 +53,11 @@ Content-Type: application/json
     "imagen": "http://ejemplo.com/otra-imagen.jpg",
     "linkGithub": "http://github.com/usuario/otro-proyecto",
     "linkDemo": "http://ejemplo.com/otra-demo",
+    "tecnologias": [
+      {
+        "nombre_tecnologia": "React"
+      }
+    ],
     "usuario_id": 1
   }
 ]
