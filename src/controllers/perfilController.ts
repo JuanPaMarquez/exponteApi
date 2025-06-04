@@ -32,7 +32,8 @@ export const obtenerPerfilPorUsuarioId = async (req: Request, res: Response) => 
     const perfil = await perfilService.obtenerPerfilPorUsuarioId(parseInt(usuario_id));
 
     if (!perfil) {
-      res.status(404).json({ error: "Perfil no encontrado" });
+      const nuevoPerfil = await perfilService.agregarPerfil("", "", "", parseInt(usuario_id));
+      res.status(201).json(nuevoPerfil);
       return;
     }
 

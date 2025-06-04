@@ -22,6 +22,7 @@ export class PerfilService {
   async obtenerPerfilPorUsuarioId(usuario_id: number) {
     const result = await db
       .select({
+        id: perfil.id,
         nombre: perfil.nombre,
         foto: perfil.foto,
         titulos: perfil.titulos,

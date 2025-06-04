@@ -4,23 +4,24 @@ import { tecnologiaService } from "../services/tecnologiaService";
 
 export const crearProyectos = async (req: Request, res: Response) => {
   const proyectos = req.body;
-
+  
   if (!Array.isArray(proyectos)) {
     res.status(400).json({ error: "Se esperaba un arreglo de proyectos" });
     return;
   }
-
+  
   const resultados = [];
-
+  
+  
   try {
     for (const proyecto of proyectos) {
       const { titulo, descripcion, imagen, linkGithub, linkDemo, usuario_id, tecnologias } = proyecto;
-
-      if (!titulo || !descripcion || !usuario_id) {
+      
+      if (titulo == null || descripcion == null || usuario_id == null) {
         res.status(400).json({ error: `Faltan datos obligatorios en el proyecto ${titulo ?? '[sin título]'}` });
         return;
       }
-
+      
       const result = await proyectoService.agregarProyecto(
         titulo,
         descripcion,
@@ -30,13 +31,18 @@ export const crearProyectos = async (req: Request, res: Response) => {
         usuario_id
       );
 
+      let tecnologiasAgregadas = [];
+      
       if (tecnologias && tecnologias.length > 0) {
         for (const tecnologia of tecnologias) {
-          await tecnologiaService.agregarTecnologia(result.id, tecnologia);
+          const tecnologiaAgregada = await tecnologiaService.agregarTecnologia(result.id, tecnologia.nombre_tecnologia);
+          tecnologiasAgregadas.push(tecnologiaAgregada);
         }
       }
-
-      resultados.push(result);
+      resultados.push({
+        ...result,
+        tecnologias: tecnologiasAgregadas.map(t => ({ id: t.id, nombre_tecnologia: t.nombre_tecnologia }))
+      });
     }
 
     res.status(201).json({ message: "Proyectos creados", proyectos: resultados });
@@ -54,7 +60,18 @@ export const obtenerProyectosPorUsuario = async (req: Request, res: Response) =>
 
   try {
     const proyectos = await proyectoService.obtenerProyectosPorUsuarioId(usuario_id);
-    
+
+    if (proyectos.length === 0) {
+      const proyectoVacio = await proyectoService.agregarProyecto("","","","","",usuario_id);
+      const tecnologia = await tecnologiaService.agregarTecnologia(proyectoVacio.id, "");
+      proyectosConTecnologias.push({
+        ...proyectoVacio,
+        tecnologias: [tecnologia]
+      });
+      res.status(200).json(proyectosConTecnologias);
+      return;
+    }
+
     for (const proyecto of proyectos) {
       const tecnologias = await tecnologiaService.obtenerTecnologiasPorProyectoId(proyecto.id);
       proyectosConTecnologias.push({

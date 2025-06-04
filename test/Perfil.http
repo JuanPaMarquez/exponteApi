@@ -1,6 +1,6 @@
 ### * Obtener perfil por ID de usuario
 
-GET http://localhost:3000/api/perfil/1
+GET http://localhost:3001/api/perfil/2
 
 
 ### * Crear un nuevo perfil
