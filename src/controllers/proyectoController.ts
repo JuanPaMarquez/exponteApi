@@ -101,7 +101,7 @@ export const modificarProyectos = async (req: Request, res: Response) => {
     for (const proyecto of proyectos) {
       const { id, titulo, descripcion, imagen, linkGithub, linkDemo, tecnologias } = proyecto;
 
-      if (!id || !titulo || !descripcion) {
+      if (id == null || titulo == null || descripcion == null) {
         res.status(400).json({ error: `Faltan datos obligatorios en el proyecto ${titulo ?? '[sin título]'}` });
         return;
       }
@@ -120,18 +120,20 @@ export const modificarProyectos = async (req: Request, res: Response) => {
         return;
       }
 
+      const nuevasTecnologias = [];
+
       for (const tecnologia of tecnologias || []) {
-        if (tecnologia.id) {
-          await tecnologiaService.modificarTecnologia(tecnologia.id, tecnologia.nombre_tecnologia);
-        }
-        else {
-          await tecnologiaService.agregarTecnologia(result.id, tecnologia.nombre_tecnologia);
-        }
+        const tecnologiaModificada = await tecnologiaService.modificarTecnologia(tecnologia.id, tecnologia.nombre_tecnologia);
+        nuevasTecnologias.push(tecnologiaModificada);
       }
 
-      resultados.push(result);
-    }
+      const proyectoConTecnologias = {
+        ...result,
+        tecnologias: nuevasTecnologias.map(t => ({ id: t.id, nombre_tecnologia: t.nombre_tecnologia }))
+      };
 
+      resultados.push(proyectoConTecnologias);
+    }
     res.status(200).json({ message: "Proyectos modificados", proyectos: resultados });
   } catch (error) {
     console.error("Error al modificar los proyectos:", error);

@@ -1,10 +1,10 @@
 ### * Obtener usuario por ID
 
-GET http://localhost:3000/api/usuario/1
+GET http://localhost:3001/api/usuario/1
 
 
 ### * Crear un nuevo usuario
-POST http://localhost:3000/api/usuario
+POST http://localhost:3001/api/usuario
 Content-Type: application/json
 
 {
@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 
 ### * Verificar el email y la contraseña de un usuario
-POST http://localhost:3000/api/usuario/verificar
+POST http://localhost:3001/api/usuario/verificar
 Content-Type: application/json
 
 {
@@ -23,7 +23,7 @@ Content-Type: application/json
 }
 
 ### * Actualizar nombre de usuario
-PUT http://localhost:3000/api/usuario/nombre/1
+PUT http://localhost:3001/api/usuario/nombre/1
 Content-Type: application/json
 
 {
@@ -31,7 +31,7 @@ Content-Type: application/json
 }
 
 ### * Actualizar contraseña de usuario
-PUT http://localhost:3000/api/usuario/password/1
+PUT http://localhost:3001/api/usuario/password/1
 Content-Type: application/json
 
 {

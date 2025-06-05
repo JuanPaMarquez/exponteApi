@@ -1,5 +1,5 @@
 ### * Crear un proyectos
-POST http://localhost:3000/api/proyecto
+POST http://localhost:3001/api/proyecto
 Content-Type: application/json
 
 [
@@ -22,55 +22,24 @@ Content-Type: application/json
 ]
 
 ### * Obtener todos los proyectos de un usuario
-GET http://localhost:3000/api/proyecto/1
+GET http://localhost:3001/api/proyecto/1
 
 ### * Modificar un proyectos
-PUT http://localhost:3000/api/proyecto/1
+PUT http://localhost:3001/api/proyecto/1
 Content-Type: application/json
 
 [
   {
-    "id": 2,
-    "titulo": "Proyecto de prueba",
-    "descripcion": "Descripción del proyecto de prueba",
-    "imagen": "http://ejemplo.com/imagen.jpg",
-    "linkGithub": "http://github.com/usuario/proyecto",
-    "linkDemo": "http://ejemplo.com/demo",
-    "tecnologias": [
-      {
-        "nombre_tecnologia": "sqlite"
-      }
-    ]
-  },
-  {
     "id": 3,
-    "titulo": "Proyecto de prueba 2 modificado",
-    "descripcion": "Descripción del proyecto de prueba 2",
+    "titulo": "Proyecto de prueba 3 modificado",
+    "descripcion": "Descripción del proyecto de prueba 3",
     "imagen": "http://ejemplo.com/imagen.jpg",
     "linkGithub": "http://github.com/usuario/proyecto",
     "linkDemo": "http://ejemplo.com/demo",
     "tecnologias": [
-      {
-        "id": 1,
-        "nombre_tecnologia": "JavaScript 2"
-      },
       {
         "id": 2,
         "nombre_tecnologia": "typescript"
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "titulo": "Otro proyecto de prueba 2 modificado",
-    "descripcion": "Descripción de otro proyecto de prueba 2",
-    "imagen": "http://ejemplo.com/otra-imagen.jpg",
-    "linkGithub": "http://github.com/usuario/otro-proyecto",
-    "linkDemo": "http://ejemplo.com/otra-demo",
-    "tecnologias": [
-      {
-        "id": 3,
-        "nombre_tecnologia": "ReactJS"
       }
     ]
   }

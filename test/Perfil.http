@@ -4,7 +4,7 @@ GET http://localhost:3001/api/perfil/2
 
 
 ### * Crear un nuevo perfil
-POST http://localhost:3000/api/perfil
+POST http://localhost:3001/api/perfil
 Content-Type: application/json
 
 {
@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ### * Actualizar perfil por ID
-PUT http://localhost:3000/api/perfil/1
+PUT http://localhost:3001/api/perfil/1
 Content-Type: application/json
 
 {

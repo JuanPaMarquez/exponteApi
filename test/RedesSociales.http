@@ -1,8 +1,8 @@
 ### * Obtener todas las redes sociales de un usuario
-GET http://localhost:3000/api/redes-sociales/1
+GET http://localhost:3001/api/redes-sociales/1
 
 ### * Agregar redes sociales
-POST http://localhost:3000/api/redes-sociales
+POST http://localhost:3001/api/redes-sociales
 Content-Type: application/json
 
 [
@@ -27,7 +27,7 @@ Content-Type: application/json
 ]
 
 ### * Actualizar redes sociales
-PUT http://localhost:3000/api/redes-sociales/1
+PUT http://localhost:3001/api/redes-sociales/1
 Content-Type: application/json
 
 [
