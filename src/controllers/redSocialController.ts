@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { redesSocialesService } from "../services/redesSocialesService";
+import { redesSocialesDefaults } from "../lib/redesSociales";
 
 export const crearRedesSociales = async (req: Request, res: Response) => {
   const redesSociales = req.body;
@@ -38,8 +39,23 @@ export const obtenerRedesSocialesPorUsuario = async (req: Request, res: Response
     return;
   }
 
+  const resultados = [];
+
   try {
     const redes = await redesSocialesService.obtenerRedesSocialesPorUsuario(Number(usuarioId));
+    
+    if (redes.length === 0) {
+      for (const redSocial of redesSocialesDefaults) {
+
+        const { social, activo, usuario } = redSocial;
+
+        const nuevaRedSocial = await redesSocialesService.agregarRedSocial(social, Number(usuarioId), activo, usuario);
+        resultados.push(nuevaRedSocial);
+      }
+      res.status(201).json(resultados);
+      return;
+    }
+
     res.status(200).json(redes);
   } catch (error) {
     console.error("Error al obtener redes sociales:", error);

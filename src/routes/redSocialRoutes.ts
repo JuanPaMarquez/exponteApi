@@ -10,6 +10,6 @@ const redSocialRoutes = Router();
 
 redSocialRoutes.post('/redes-sociales', crearRedesSociales);
 redSocialRoutes.get('/redes-sociales/:usuarioId', obtenerRedesSocialesPorUsuario);
-redSocialRoutes.put('/redes-sociales/:id', modificarRedSocial);
+redSocialRoutes.put('/redes-sociales', modificarRedSocial);
 
 export default redSocialRoutes;

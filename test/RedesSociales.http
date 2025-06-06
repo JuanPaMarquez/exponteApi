@@ -1,5 +1,5 @@
 ### * Obtener todas las redes sociales de un usuario
-GET http://localhost:3001/api/redes-sociales/1
+GET http://localhost:3001/api/redes-sociales/2
 
 ### * Agregar redes sociales
 POST http://localhost:3001/api/redes-sociales
@@ -27,14 +27,14 @@ Content-Type: application/json
 ]
 
 ### * Actualizar redes sociales
-PUT http://localhost:3001/api/redes-sociales/1
+PUT http://localhost:3001/api/redes-sociales/
 Content-Type: application/json
 
 [
   {
-    "id": 2,
-    "social": "Twitter",
-    "activo": false,
-    "usuario": "http://twitter.com/usuario"
+    "id": 8,
+    "social": "Facebook",
+    "activo": true,
+    "usuario": "http://facebook.com/usuario"
   }
 ]
