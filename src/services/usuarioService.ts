@@ -35,6 +35,17 @@ export class UsuarioService {
     return result[0];
   }
 
+  async obtenerUsuarioPorNombre(nombre_usuario: string) {
+    const result = await db
+      .select({ 
+        id: usuario.id
+       })
+      .from(usuario)
+      .where(eq(usuario.nombre_usuario, nombre_usuario))
+      .limit(1);
+    return result[0];
+  }
+
   // Verificar si un nombre de usuario ya existe
   async existeUsuario(nombre_usuario: string) {
 
@@ -79,7 +90,8 @@ export class UsuarioService {
   async obtenerUsuarioPorId(id: number) {
     return await db
       .select({
-        nombre: usuario.nombre_usuario,
+        id: usuario.id,
+        nombre_usuario: usuario.nombre_usuario,
         email: usuario.email,
       })
       .from(usuario)

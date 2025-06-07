@@ -1,0 +1,16 @@
+### * Obtener colores por id
+GET http://localhost:3001/api/colores/2
+
+### * Modificar colores
+PUT http://localhost:3001/api/colores
+Content-Type: application/json
+
+{
+  "id": 2,
+  "color_texto": "#ffffff",
+  "color_titulo": "#8fdaff",
+  "fondo_navegacion": "#287dbe",
+  "fondo_presentacion": "#0d2a3f",
+  "fondo_proyectos": "#21689e",
+  "fondo_redes": "#0d2a3f"
+}

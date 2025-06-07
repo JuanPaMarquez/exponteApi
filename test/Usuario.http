@@ -37,3 +37,6 @@ Content-Type: application/json
 {
   "password": "321nora"
 }
+
+### * Obtener usuario por nombre de usuario
+GET http://localhost:3001/api/usuario/nombre/juanpablo

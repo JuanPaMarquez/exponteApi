@@ -39,6 +39,7 @@ export const obtenerUsuarioPorId = async (req: Request, res: Response) => {
     return; 
   }
 
+
   try {
     const usuario = await usuarioService.obtenerUsuarioPorId(parseInt(id));
     res.status(200).json(usuario);
@@ -69,6 +70,8 @@ export const verificarSesionUsuario = async (req: Request, res: Response) => {
 export const modificarNombreUsuario = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { nombre_usuario } = req.body;
+
+  console.log("llego?", id, nombre_usuario);
 
   if (!id || !nombre_usuario) {
     res.status(400).json({ error: "ID y nombre de usuario son obligatorios" });
@@ -106,5 +109,26 @@ export const modificarPasswordUsuario = async (req: Request, res: Response) => {
     res.status(200).json({ message: "Contraseña modificada correctamente" });
   } catch (error) {
     res.status(500).json({ error: "Error al modificar la contraseña del usuario" });
+  }
+};
+
+export const obtenerUsuarioPorNombre = async (req: Request, res: Response) => {
+  const { nombre_usuario } = req.params;
+
+  if (!nombre_usuario) {
+    res.status(400).json({ error: "El nombre de usuario es obligatorio" });
+    return; 
+  }
+
+  try {
+    const usuario = await usuarioService.obtenerUsuarioPorNombre(nombre_usuario);
+    if (!usuario) {
+      res.status(404).json({ error: "Usuario no encontrado" });
+      return;
+    }
+    res.status(200).json(usuario);
+  } catch (error) {
+    console.error("Error al obtener el usuario por nombre:", error);
+    res.status(500).json({ error: "Error al obtener el usuario por nombre" });
   }
 };

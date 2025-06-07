@@ -4,6 +4,7 @@ import perfilRouter from './routes/perfilRoutes';
 import proyectoRouter from './routes/proyectoRoutes';
 import tecnologiaRouter from './routes/tecnologiaRoutes';
 import redSocialRoutes from './routes/redSocialRoutes';
+import coloresRouter from './routes/coloresRoutes';
 
 const app = express();
 const cors = require('cors');
@@ -25,6 +26,7 @@ app.use('/api', perfilRouter);
 app.use('/api', proyectoRouter);
 app.use('/api', tecnologiaRouter);
 app.use('/api', redSocialRoutes);
+app.use('/api', coloresRouter);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

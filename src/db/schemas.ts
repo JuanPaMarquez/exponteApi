@@ -43,3 +43,14 @@ export const tecnologia = sqliteTable('tecnologia', {
   proyecto_id: integer('proyecto_id').notNull().references(() => proyectos.id, { onDelete: 'cascade' }),
   nombre_tecnologia: text('nombre_tecnologia').notNull(),
 });
+
+export const colores = sqliteTable('colores', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  color_texto: text('color_texto').notNull(),
+  color_titulo: text('color_titulo').notNull(),
+  fondo_navegacion: text('fondo_navegacion').notNull(),
+  fondo_presentacion: text('fondo_presentacion').notNull(),
+  fondo_proyectos: text('fondo_proyectos').notNull(),
+  fondo_redes: text('fondo_redes').notNull(),
+  usuario_id: integer('usuario_id').notNull().references(() => usuario.id),
+});
